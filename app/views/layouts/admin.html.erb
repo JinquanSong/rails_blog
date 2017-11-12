@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>RailsBlog</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+
+<div class="container-fluid display-table">
+  <div class="row display-table-row">
+    <!-- side menu -->
+    <%= render 'side_menu' %>
+
+    <!-- main content area -->
+    <div class="col-md-10 col-sm-11 display-table-cell valign-top">
+      <%= render 'site_header' %>
+      <div class="row"%>
+          <%= yield %>
+      </div>
+      <%= render 'site_footer' %>
+    </div>
+  </div>
+</div>
+</body>
+</html>

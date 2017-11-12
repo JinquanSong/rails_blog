@@ -1,0 +1,28 @@
+<p><%= render 'validation_errors', object: @post %></p>
+
+<%= form_for([:admin, @post]) do |f| %>
+    <div class="form-group">
+      <%= f.label :title, class: 'sr-only' %>
+      <%= f.text_field :title, placeholder: 'Title', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tags, class: 'sr-only' %>
+      <%= f.select :tag_ids, Tag.all.collect{|t| [t.name, t.id]}, {prompt: 'Select Tag'}, multiple: true,
+                   'data-placeholder': 'Select Tags', class: 'form-control chosen-select' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :content, class: 'sr-only' %>
+      <%= f.text_area :content, class: 'form-control summernote', placeholder: 'Content' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.check_box :publish %>
+      <%= f.label 'Publish artical when I click on save' %>
+    </div>
+
+    <div class="clearfix">
+      <%= f.submit 'Save/Publish', class: 'btn btn-primary pull-right' %>
+    </div>
+<% end %>

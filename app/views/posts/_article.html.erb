@@ -1,0 +1,24 @@
+<article>
+  <h1><%= truncate(@post.title, length: 30, separator: '') %></h1>
+
+  <div class="lead">
+    <%= @post.content %>
+  </div>
+</article>
+
+<div id="comments">
+  <h2>Comments</h2>
+  <% @post.comments.approved.each.with_index(1) do |comment, index| %>
+      <div class="row">
+        <div class="col-md-11">
+            <h4><%= comment.message %></h4>
+            <footer>
+              <small><b> <%= comment.visitor.fullname %></b>commented: <%= time_ago(comment.created_at) %></small>
+            </footer>
+        </div>
+        <div class="col-md-1 comment-num">
+          <%= double_digit_number(index) %>
+        </div>
+      </div>
+  <% end %>
+</div>

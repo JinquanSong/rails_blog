@@ -1,0 +1,23 @@
+<h1>Moderator's Index</h1>
+<table class="table table dordered table-hover">
+  <thead>
+    <tr>
+      <th>fullname</th>
+      <th>username</th>
+      <th>created</th>
+      <th>actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% @moderators.each do |m| %>
+      <tr>
+        <td><%= m.fullname %></td>
+        <td><%= m.username %><</td>
+        <td><%= time_ago(m.created_at) %></td>
+        <td>
+          <%= link_to 'Edit', edit_admin_moderator_path(m) %>
+        </td>
+      </tr>
+   <% end %>
+  </tbody>
+</table>

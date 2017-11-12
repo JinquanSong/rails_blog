@@ -1,0 +1,10 @@
+<%= form_tag(route, method: :get) do %>
+  <div class="row search-row">
+    <div class="col-xs-10 col-sm-10 col-md-11">
+      <%= text_field_tag :search, nil, class: 'form-control search-field', placeholder: 'Search' %>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-1">
+      <%= submit_tag 'Go!', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

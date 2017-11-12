@@ -1,0 +1,43 @@
+
+  <div class="row" >
+    <div class="col-md-6">
+      <%= form_for [:admin, @setting] do |f| %>
+          <div class="settings-row" >
+            <h3>Site name</h3>
+            <p>This is permently show on the top left corner of navigation</p>
+            <div class="form-group">
+              <%= f.text_field :site_name, class: 'form-control', required: 'required' %><br>
+            </div>
+          </div>
+
+          <div class="settings-row" >
+            <h3>Posts per page</h3>
+            <p>Control total number of blogs show on the blog index page.</p>
+            <div class="form-group">
+              <%= f.number_field :post_per_page, class: 'form-control', required: 'required' %><br>
+            </div>
+          </div>
+
+          <div class="settings-row" >
+          <h3>Under maintenance</h3>
+          <p>Redirect all requests to a holding page</p>
+          <%= f.check_box :under_maintenance %>
+          Blog is under maintenance
+
+          <div class="settings-row" >
+            <h3>Prevent commenting</h3>
+            <p>Prevent or Enable visitros from leaving comments</p>
+            <%= f.select :prevent_commenting, [['disable', false], ['active', true]], class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="settings-row" >
+            <h3>Tags visibility</h3>
+            <p>Enable or Disable tag visibility on all blog posts</p>
+            <%= f.select :prevent_commenting, [['disable', false], ['active', true]], class: 'form-control' %>
+          </div>
+
+          <%= f.button 'Save Settings', type: 'submit', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>

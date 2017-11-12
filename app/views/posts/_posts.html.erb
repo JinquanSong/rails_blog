@@ -1,0 +1,25 @@
+<% @posts.each do |post| %>
+    <article>
+      <header>
+        <h2>
+         <%= truncate(post.title, length: 70, separator: '') %>
+        </h2>
+      </header>
+      <footer>
+        <small>Posted on <%=post.created_at %></small>
+      </footer>
+      <div class="lead">
+        <%= truncate(post.content, length: 104, separator: ' ') { link_to 'Read More', post_path(post)} %>
+      </div>
+      <% if Setting.tag_visible? %>
+          <footer>
+            <% post.tags.each do |tag| %>
+                <span class="label label-default"><%= tag.name %></span>
+            <% end %>
+          </footer>
+      <% end %>
+      <hr>
+    </article>
+<% end %>
+
+  <%= paginate @posts %>

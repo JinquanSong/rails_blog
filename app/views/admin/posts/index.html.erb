@@ -1,0 +1,47 @@
+<div id="content">
+  <header class="clearfix">
+    <h2 class="page-title pull-left">All Posts</h2>
+    <%= link_to 'New Post', new_admin_post_path, class: "btn btn-xs btn-primary pull-right" %>
+  </header>
+
+  <div class="content-inner">
+    <%= render 'search', route: admin_posts_path %>
+
+    <% @posts.each do |post| %>
+      <div class="row post-row">
+        <div class="col-xs-2 col-xs-1  col-md-1 status-padding">
+          <%= status_converter(post.publish) %>
+        </div>
+
+        <div class="col-xs-10 col-sm-6 col-md-8 post-title">
+          <p>
+            <%= truncate(post.title, length: 120, separate: '') %>
+          </p>
+
+          <small>
+            <%= time_ago(post.created_at) %>
+          </small>
+        </div>
+
+        <div class="col-xs-10 col-sm-5 col-md-3 col-xs-offset-2 col-sm-offset-0 col-md-offset-0 col-xs-offset-0">
+          <div class="post-actions">
+            <a class="btn btn-xs btn-default" href="<%=admin_post_path(post)%>" role="button">
+              <span class="glyphicon glyphicon-folder-open" aria-hidden="true">&nbsp;View</span>
+            </a>
+
+            <a class="btn btn-xs btn-default" href="<%=edit_admin_post_path(post)%>" role="button">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true">&nbsp;Edit</span>
+            </a>
+
+            <%= link_to admin_post_path(post), class: 'btn btn-xs btn-default', data: {method: :delete, confirm: "Are you sure?"} do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true">&nbsp;Delete</span>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<%= paginate @posts %>

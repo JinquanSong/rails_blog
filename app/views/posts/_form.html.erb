@@ -1,0 +1,34 @@
+<%= form_for @visitor_comment, url: comments_url do |f| %>
+    <h3>Have your say</h3>
+    <% if session[:visitor_errors] %>
+        <div id="error_explanation">
+          <h2><%= pluralize(session[:visitor_errors].count, "error") %> prohibited this comment from being saved</h2>
+          <hl>
+            <% session[:visitor_errors].each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+          </hl>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.fields_for :comments do |c| %>
+          <%= c.label :message, class: 'sr-only' %>
+          <%= c.text_area :message, placeholder: 'Message', id: 'message', class: 'form-control',
+                          required: 'required', autocomplete: 'false'  %>
+          <%= c.hidden_field :post_id, value: @post.id %>
+      <% end %>
+    </p>
+
+    <p>
+      <%= f.label :fullname, class: 'sr-only' %>
+      <%= f.text_field :fullname, class: 'form-control', placeholder: 'Full Name' %>
+    </p>
+
+    <p>
+      <%= f.label :email, class: 'sr-only' %>
+      <%= f.text_field :email, type: 'email', class: 'form-control', placeholder:  'Email Address' %>
+    </p>
+
+    <p><%= f.submit 'Add Comment', class: 'btn btn-primary' %></p>
+<% end %>

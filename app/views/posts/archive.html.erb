@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'archive' %>
+
+<h1>Archive</h1>
+<% @archived_posts.each do |year, posts| %>
+    <h3><%= year %></h3>
+    <% posts.each do |post| %>
+        <article>
+          <div class="row">
+            <div class="col-md-9">
+              <a href="<%= post_path(post) %>"><%= post.title %></a>
+            </div>
+            <div class="col-md-3 date">
+                <%= post.created_at.to_date %>
+            </div>
+          </div>
+        </article>
+    <% end %>
+<% end %>
