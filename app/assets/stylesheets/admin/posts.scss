@@ -1,0 +1,51 @@
+// Place all the styles related to the admin/posts controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-default {
+  color: #676a6c;
+  border: 1px #eee solid;
+}
+
+.btn-default:hover {
+  background-color: #f3f3f4;
+  color: #676a6c;
+  border: 1px #eee solid;
+}
+
+.post-row {
+  padding-bottom: 10px;
+}
+
+.post-row p {
+  font-size: 16px;
+  margin-bottom: 0px;
+  font-weight: 400;
+}
+
+.status-padding {
+  padding-top: 10px;
+}
+
+.post-title small {
+  color: #bbb;
+}
+
+@media(max-width: 991px) {
+  .post-title {
+    padding-left: 30px;
+  }
+}
+
+@media(min-width: 767px) {
+  .post-actions {
+    float: right;
+  }
+}
+
+@media(max-width: 767px) {
+  .post-actions {
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+}

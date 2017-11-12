@@ -1,0 +1,3 @@
+module AboutHelper
+
+end

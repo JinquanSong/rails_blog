@@ -1,0 +1,26 @@
+// Place all the styles related to the admin/comments controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment-row {
+  margin-bottom: 30px;
+}
+
+.comment-age {
+  font-size: 12px;
+}
+
+.comment-well {
+  margin-top: 10px;
+}
+
+.btn-default {
+  color: #676a6c;
+  border: 1px #eee solid;
+}
+
+.btn-default:hover {
+  color: #676a6c;
+  border: 1px #eee solid;
+  background-color: #f3f3f4;
+}

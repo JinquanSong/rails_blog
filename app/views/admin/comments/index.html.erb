@@ -1,0 +1,58 @@
+<div id="content">
+  <header class="clearfix">
+    <h2 class="page-title pull-left">All Comments</h2>
+    <%= link_to 'New Post', new_admin_post_path, class: "btn btn-xs btn-primary pull-right" %>
+  </header>
+
+  <div class="content-inner">
+    <%= render 'search', route: admin_comments_path(status: true) %>
+    <% @comments.each do |comment| %>
+      <div class="row comment-row">
+        <div class="col-sm-2 col-md-1">
+          <img class="img-circle hidden-xs" src="https://api.fnkr.net/testimg/70x70/00CED1/FFF/?text=70x70">
+        </div>
+
+        <div class="col-xs-9 col-sm-10 col-md-11">
+          <div class="row">
+            <div class="col-sm-10 col-md-9">
+              <b> <%= comment.visitor.fullname %> </b> posted message on <b> <%= truncate(comment.post.title, length: 60, separater: '') %></b><br>
+              <small> <%= comment.created_at %></small>
+            </div>
+
+            <div class="col-xs-3 col-sm-2 col-md-3">
+              <div class="clearfix">
+                <div class="pull-right comment-age">
+                  <%= time_ago(comment.created_at) %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="well well-sm comment-well">
+            <%= comment.message %>
+          </div>
+
+          <div class="clearfix">
+            <div class="pull-right">
+              <% if comment.status %>
+                <%= link_to(admin_comment_path(comment, status: false), method: 'put', class: 'btn btn-xs btn-default',role: 'button')  do %>
+                  <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Un-approve
+                <% end %>
+              <% else %>
+                <%= link_to(admin_comment_path(comment, status: true), method: 'put', class: 'btn btn-xs btn-default',role: 'button')  do %>
+                    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Approve
+                <% end %>
+              <% end %>
+
+              <a class="btn btn-xs btn-default" href="#" role="button">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                Delete
+              </a>
+            </div>
+          </div>
+        </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<p><%= paginate @comments %></p>

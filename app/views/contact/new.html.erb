@@ -1,0 +1,34 @@
+<%= stylesheet_link_tag 'contact' %>
+
+<h1>Contact Me</h1>
+<div class="lead">
+  Ruby is an object-oriented programming language.
+  Ruby on Rails is a web application framework, which will provide project structure,
+  libraries of code for common tasks, and sensible default behaviors.
+</div>
+<hr>
+<p>twitter: <a href="http://twitter.com/johnsong" target="_blank">@johnsong</a></p>
+<p>linkedin: <a href="https://www.linkedin.com/in/john-song-5496583a/" target="_blank">follow me on linkedin</a></p>
+<p>github: <a href="https://github.com/JinquanSong" target="_blank">follow me on github</a></p>
+<hr>
+
+<div class="row">
+  <div class="col-md-9">
+    <h3>Send me a message</h3>
+      <%= form_tag(contact_index_path, method: 'post') do |f| %>
+        <p>
+          <%= label_tag :visitor_name,'', class: "sr-only" %>
+          <%= text_field_tag :visitor_name,'Your Name', class: 'form-control', placeholder: "Your Name", required: 'required' %>
+        </p>
+        <p>
+          <%= label_tag :message,'Your Message', class: "sr-only" %>
+          <%= text_area_tag :message,'',  class: 'form-control', placeholder: "Your Message", id: 'textarea', required: 'required' %>
+        </p>
+        <p>
+          <%= submit_tag 'Send Contact', class: 'btn btn-primary' %>
+        </p>
+
+      <% end %>
+  </div>
+</div>
+

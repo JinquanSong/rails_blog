@@ -1,0 +1,30 @@
+<%= form_for @visitor_message, url: messages_url do |f| %>
+    <% if @visitor_message.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@visitor_message.errors.full_messages.count, "error") %> prohibited this message from sending</h2>
+          <hl>
+            <% @visitor_message.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+          </hl>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :fullname %>
+      <%= f.text_field :fullname %>
+    </p>
+
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </p>
+
+    <p>
+      <%= f.fields_for :messages do |c| %>
+          <%= c.label :content %>
+          <%= c.text_area :content %>
+      <% end %>
+    </p>
+
+    <p><%= f.submit 'Send Message' %></p>
+<% end %>

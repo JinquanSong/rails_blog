@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsBlog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'nav_bar' %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 profile">
+          <%= render 'profile' %>
+        </div>
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+
+<div class="admin-content-con">
+  <header>
+    <h5>Create tags</h5>
+  </header>
+
+  <%= form_for [:admin, @tag] do |f| %>
+      <div class="form-group">
+        <label>Add comma separated</label>
+      </div>
+      <p>
+        <%= f.text_area :name, placeholder: 'e.g, Ruby, Python, Php', class: 'form-control', rows: 3 %>
+      </p>
+
+      <p>
+        <%= f.submit 'Save Tags', class: 'btn btn-large btn-block btn-primary'%>
+      </p>
+  <% end %>
+</div>
